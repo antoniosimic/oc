@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Osnovni CSS elementi — demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Osnovni CSS elementi — kratki vodič</h1>
+    <p class="lead">Primjeri i objašnjenja kako osnovne CSS osobine rade.</p>
+  </header>
+
+  <main>
+    <section id="colors">
+      <h2>Boje (color, background-color)</h2>
+      <p class="example note">Primjer teksta s bojom i pozadinom.</p>
+      <pre class="code">.note { color: white; background-color: #0077cc; padding: 8px; }</pre>
+    </section>
+
+    <section id="text">
+      <h2>Tipografija (font-size, font-weight, line-height)</h2>
+      <p class="big">Veći tekst (font-size)</p>
+      <p class="muted">Manji i slabije istaknut tekst (font-weight, color)</p>
+      <pre class="code">.big { font-size: 1.5rem; }
+.muted { color: #666; font-weight: 300; }</pre>
+    </section>
+
+    <section id="box-model">
+      <h2>Box model (margin, padding, border)</h2>
+      <div class="box">Box model primjer</div>
+      <pre class="code">.box { margin: 16px; padding: 12px; border: 2px dashed #666; }</pre>
+    </section>
+
+    <section id="layout">
+      <h2>Layout (display, flex)</h2>
+      <div class="row">
+        <div class="col">Stupac 1</div>
+        <div class="col">Stupac 2</div>
+        <div class="col">Stupac 3</div>
+      </div>
+      <pre class="code">.row { display: flex; gap: 8px; }
+.col { background:#f3f3f3; padding:12px; flex:1; }</pre>
+    </section>
+
+    <section id="responsive">
+      <h2>Responsive pravila (media queries)</h2>
+      <p>Koristite @media za prilagodbu na manjim ekranima.</p>
+      <pre class="code">@media (max-width:600px) { .row { flex-direction: column; } }</pre>
+    </section>
+
+    <section id="pseudo">
+      <h2>Pseudo-klase i selektori</h2>
+      <p><a class="btn" href="#">Primjer gumba</a></p>
+      <pre class="code">a.btn:hover { background:#005fa3; color:#fff; }</pre>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Kraktki demo — prilagodi dalje po potrebi.</p>
+  </footer>
+</body>
+</html>
