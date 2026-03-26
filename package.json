@@ -1,0 +1,8 @@
+{
+  "name": "oc-css-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "vercel-build": "npx tailwindcss -i ./src/input.css -o ./public/styles.css --minify"
+  }
+}
