@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="hr">
+<html lang="hr" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,7 +7,6 @@
   <script>window.tailwind = { config: { darkMode: 'class' } }</script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<html lang="hr" class="">
 <body class="bg-gray-50 text-gray-800 dark:bg-slate-900 dark:text-gray-100">
   <header class="bg-white dark:bg-slate-800 shadow sticky top-0 z-30">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,10 +16,10 @@
         </div>
 
         <!-- Desktop nav -->
-        <nav class="hidden md:flex items-center space-x-4">
-          <a class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white" href="#components">Komponente</a>
-          <a class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white" href="#layout">Layout</a>
-          <a class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white" href="#forms">Forme</a>
+        <nav id="main-nav" class="hidden md:flex items-center space-x-4">
+          <a class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white" href="#components">Komponente</a>
+          <a class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white" href="#layout">Layout</a>
+          <a class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white" href="#forms">Forme</a>
           <button id="theme-toggle" class="ml-4 p-2 rounded-md bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200">
             <span id="theme-sun" class="hidden">☀️</span>
             <span id="theme-moon">🌙</span>
@@ -60,18 +59,18 @@
     <section id="components" class="space-y-4">
       <h3 class="text-xl font-semibold">Komponente</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="p-4 bg-white dark:bg-slate-800 rounded-lg shadow">
+        <div class="p-4 bg-white dark:bg-slate-800 rounded-lg shadow transition-transform hover:-translate-y-1">
           <h4 class="font-bold">Karta</h4>
           <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Box s paddingom, border-radius i shadow.</p>
           <button class="mt-4 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Akcija</button>
         </div>
 
-        <div class="p-4 bg-white dark:bg-slate-800 rounded-lg shadow">
+        <div class="p-4 bg-white dark:bg-slate-800 rounded-lg shadow transition-transform hover:-translate-y-1">
           <h4 class="font-bold">Badge</h4>
           <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded">Nova</span>
         </div>
 
-        <div class="p-4 bg-white dark:bg-slate-800 rounded-lg shadow">
+        <div class="p-4 bg-white dark:bg-slate-800 rounded-lg shadow transition-transform hover:-translate-y-1">
           <h4 class="font-bold">Alert</h4>
           <div class="mt-2 p-3 bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800">Obavijest o važnoj stvari.</div>
         </div>
@@ -169,6 +168,20 @@
 
     themeToggle && themeToggle.addEventListener('click', ()=> setTheme(!document.documentElement.classList.contains('dark')))
     themeToggleMobile && themeToggleMobile.addEventListener('click', ()=> setTheme(!document.documentElement.classList.contains('dark')))
+
+    // Active nav on scroll
+    const sections = document.querySelectorAll('main section[id]')
+    const navLinks = document.querySelectorAll('.nav-link')
+    function onScroll() {
+      let index = sections.length
+      while(--index && window.scrollY + 100 < sections[index].offsetTop) {}
+      navLinks.forEach(link => link.classList.remove('font-semibold'))
+      const id = sections[index] && sections[index].id
+      const active = document.querySelector('.nav-link[href="#'+id+'"]')
+      if (active) active.classList.add('font-semibold')
+    }
+    window.addEventListener('scroll', onScroll)
+    onScroll()
   </script>
 </body>
 </html>
